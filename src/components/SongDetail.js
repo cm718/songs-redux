@@ -1,6 +1,6 @@
 import React from 'react'
 
-function SongDetail() {
+const SongDetail = () => {
   return (
     <div>
       <h3>Song Detail</h3>
