@@ -1,16 +1,21 @@
 import React from 'react'
+import { selectSong } from '../actions'
 import { connect } from 'react-redux'
 
-export const SongList = ({ songs }) => {
-  console.log('songs', songs)
+export const SongList = ({ songs, selectSong }) => {
   return (
-    <div className='ui divided list'>
+    <div className='ui divided list' style={{ marginTop: '40px' }}>
       {songs.map(song => (
         <div className='item' key={song.title}>
           <div className='right floated content'>
-            <button className='ui button primary'>Select</button>
+            <button
+              onClick={() => selectSong(song)}
+              className='ui button primary'
+            >
+              Select
+            </button>
           </div>
-          <div className='content'>{song.title}</div>
+          <h3>{song.title}</h3>
         </div>
       ))}
     </div>
@@ -23,4 +28,4 @@ const mapStateToProps = state => {
 
 // const mapDispatchToProps = {}
 // mapDispatchToProps
-export default connect(mapStateToProps)(SongList)
+export default connect(mapStateToProps, { selectSong })(SongList)
